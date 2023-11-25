@@ -24,7 +24,7 @@ const App = () => {
         console.error('Error fetching search results:', error);
       }
     };
-    console.log(searchQuery,"showww")
+    console.log(searchQuery,"show")
     handleSearch({searchQuery})
   },[searchQuery])
   

@@ -40,6 +40,7 @@ const BookList = ({ books }) => {
         );
     }
     const OnClickShowBook = (book, index) => {
+      console.log(book , "book showing")
         const bok = book.book.book.book;
         console.log(book.book.book.book, "bb");
 
@@ -68,10 +69,10 @@ const BookList = ({ books }) => {
 
                     <div className="info-box">
                         <div className="box-1">
-                            Avg Rating : {bok.volumeInfo.averageRating}
+                            Avg Rating : {bok.volumeInfo.averageRating ? bok.volumeInfo.averageRating : 4.5}
                         </div>
                         <div className="box-2">
-                            Rating Count : {bok.volumeInfo.ratingsCount}
+                            Rating Count : {bok.volumeInfo.ratingsCount ? bok.volumeInfo.ratingsCount : 85}
                         </div>
                         <div className="box-3">
                             Publisher : {bok.volumeInfo.publisher}
@@ -98,10 +99,6 @@ const BookList = ({ books }) => {
                             </button>
                         </a>
                     </div>
-                    {/* <div className="select-book-now-read">
-            <button className="select-now-read-btn">Now Read!</button>
-            <button className="select-now-read-btn">More Info!</button>
-          </div> */}
                 </div>
             </div>
         );
@@ -112,7 +109,7 @@ const BookList = ({ books }) => {
         try {
             imgg = book.book.volumeInfo.imageLinks.thumbnail;
         } catch (error) {
-            console.log(error, "errrrro");
+            console.log(error, "error in  image");
         }
 
         return (
@@ -135,7 +132,7 @@ const BookList = ({ books }) => {
             ) : (
                 <div className="book-list">
                     {books.map((book, index) =>
-                        index < 3 ? <Book book={book} index={index} /> : ""
+                        index < 3 ? <Book book={book} index={index} key = {index} /> : ""
                     )}
                 </div>
             )}
@@ -143,7 +140,7 @@ const BookList = ({ books }) => {
             <div className="book-list-more">
                 {books.map(
                     (book, index) =>
-                        index >= 3 && <BookImage book={book} index={index} />
+                        index >= 3 && <BookImage book={book} index={index} key = {index}/>
                 )}
             </div>
         </>
